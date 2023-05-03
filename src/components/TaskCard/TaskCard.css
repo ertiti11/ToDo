@@ -1,0 +1,23 @@
+.taskCard{
+    background-color: rgb(91, 91, 91);
+    border-radius: 15px;
+    width: 10em;
+    height: 8em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    margin: 0;
+    font-size: 1.5em;
+}
+
+p{
+    margin: 0;
+    max-height: 6em; /* ajuste la altura máxima de acuerdo a su necesidad */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    max-width: 100%;
+}

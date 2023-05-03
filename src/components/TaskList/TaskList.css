@@ -1,0 +1,7 @@
+.taskList{
+    margin: 20px;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    
+}
