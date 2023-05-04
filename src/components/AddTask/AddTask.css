@@ -1,6 +1,13 @@
-.myButton {
+.addTask {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    
     z-index: 999;
+  }
+
+
+
+  .taskForm{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
   }

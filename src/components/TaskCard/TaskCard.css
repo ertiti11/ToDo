@@ -2,7 +2,7 @@
     background-color: rgb(91, 91, 91);
     border-radius: 15px;
     width: 10em;
-    height: 8em;
+    height: 10em;
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -11,6 +11,7 @@
 h1{
     margin: 0;
     font-size: 1.5em;
+    word-wrap: break-word;
 }
 
 p{
@@ -20,4 +21,11 @@ p{
     text-overflow: ellipsis;
     word-wrap: break-word;
     max-width: 100%;
+}
+
+
+.taskImage{
+    width: 100%;
+    z-index: -9999;
+
 }

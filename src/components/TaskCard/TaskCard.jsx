@@ -1,8 +1,7 @@
 import './TaskCard.css'
 import { useRef, useEffect } from "react";
 
-
-export default function TaskCard({title, description}) {
+export default function TaskCard({title, description,image}) {
   const descriptionRef = useRef(null);
 
   useEffect(() => {
@@ -12,12 +11,22 @@ export default function TaskCard({title, description}) {
     }
   }, []);
 
-  console.log("taskcard");
-  return (
-    <div className="taskCard">
-        <h1>{title}</h1>
-        <p ref={descriptionRef}>{description}</p>
-        
-    </div>
-  )
+  if(image != ""){
+    console.log(image)
+    return (
+      <div className="taskCard">
+          <h1>{title}</h1>
+          <p ref={descriptionRef}>{description}</p>
+      </div>
+    )
+  }else{
+    return (
+      <div className="taskCard" >
+          <h1>{title}</h1>
+          <p ref={descriptionRef}>{description}</p>
+      </div>
+    )
+  }
+
+  
 }
