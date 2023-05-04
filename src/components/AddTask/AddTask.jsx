@@ -36,6 +36,7 @@ export default function AddTask() {
     };
 
     await pb.collection("tasks").create(data);
+    setOpen(false);
   }
 
   return (
