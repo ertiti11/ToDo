@@ -1,7 +1,7 @@
 import './TaskCard.css'
 import { useRef, useEffect } from "react";
 
-export default function TaskCard({title, description,image}) {
+export default function TaskCard({title, description,image,tag, color}) {
   const descriptionRef = useRef(null);
 
   useEffect(() => {
@@ -10,20 +10,21 @@ export default function TaskCard({title, description,image}) {
       descriptionRef.current.textContent = text.slice(0, 50) + "...";
     }
   }, []);
-
+  console.log(color)
   if(image != ""){
-    console.log(image)
     return (
-      <div className="taskCard">
+      <div className="taskCard" style={{backgroundColor : color}}>
           <h1>{title}</h1>
           <p ref={descriptionRef}>{description}</p>
+          <span className='tag'>{tag}</span>
       </div>
     )
   }else{
     return (
-      <div className="taskCard" >
+      <div className="taskCard" style={{backgroundColor : color}}>
           <h1>{title}</h1>
           <p ref={descriptionRef}>{description}</p>
+          <span className='tag'>{tag}</span>
       </div>
     )
   }

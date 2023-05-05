@@ -1,12 +1,23 @@
 import './App.css'
-import TaskList from './components/TaskList/TaskList'
-import AddTask from './components/AddTask/AddTask'
+import { Route } from 'wouter'
+import Home from './pages/Home/Home'
+import Categories from './pages/categories/Categories'
+
+
+
 function App() {
 
   return (
     <>
-      <TaskList />
-      <AddTask />
+      <Route 
+      component={Home}
+      path='/'
+      />
+      <Route 
+      component={Categories}
+      path='/categories/:keyword'
+      />
+      
     </>
   )
 }

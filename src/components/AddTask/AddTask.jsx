@@ -6,6 +6,8 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import "./AddTask.css";
 import PocketBase from "pocketbase";
+import 'animate.css';
+
 
 const pb = new PocketBase("http://127.0.0.1:8090");
 
@@ -25,25 +27,32 @@ export default function AddTask() {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [tag, setTag] = useState("");
+  const [color, setColor] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   async function onSubmitHandler(e) {
     e.preventDefault();
+    console.log(color)
     const data = {
       titulo: title,
       descripcion: description,
+      tag: tag,
+      color: color
     };
 
     await pb.collection("tasks").create(data);
+    setOpen(false);
   }
 
   return (
     <div>
       <Button className="addTask" onClick={handleOpen}>
-        Open modal
+        Add
       </Button>
-      <Modal
+      <Modal 
+        className="animate__zoomIn"
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -75,6 +84,20 @@ export default function AddTask() {
               multiline
               rows={4}
             />
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Tag
+            </Typography>
+            <TextField
+              onChange={(evt) => {
+                setTag(evt.target.value);
+              }}
+              id="outlined-basic"
+              label="Tag"
+              variant="outlined"
+            />
+            <input type="color" value={color} onChange={(evt) => {
+                setColor(evt.target.value);
+              }} />
             <Button type="submit" variant="contained">
               Añadir
             </Button>

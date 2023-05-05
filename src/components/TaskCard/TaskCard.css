@@ -6,6 +6,7 @@
     padding: 1em;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 h1{
@@ -28,4 +29,14 @@ p{
     width: 100%;
     z-index: -9999;
 
+}
+
+
+.tag{
+    background-color: rgba(189, 189, 189, 0.326);
+    border-radius: 15px;
+    display: inline;
+    width: 50%;
+    padding: .2em;
+    text-align: center;
 }
