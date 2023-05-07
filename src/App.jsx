@@ -7,14 +7,15 @@ import { pb } from "./services/getTasks";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
-
+ 
+  
   useEffect(() => {
     checkAuthentication();
   }, []);
 
   const checkAuthentication = async () => {
     setAuthenticated(pb.authStore.isValid);
-    console.log(authenticated)
+    
   };
 
 
@@ -22,13 +23,11 @@ function App() {
   return (
     
     <Switch>
-    
+      console.log(aut)
       <Route exact path="/">
-        {authenticated ? <Home /> : <Redirect to="/login" />}
+        {pb.authStore.isValid ? <Home /> : <Redirect to="/login" />}
       </Route>
-      <Route path="/categories/:keyword">
-        {authenticated ? <Categories /> : <Redirect to="/login" />}
-      </Route>
+      <Route path="/categories/:keyword" component={Categories} />
       <Route path="/login" component={Login} />
     </Switch>
   );

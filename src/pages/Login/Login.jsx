@@ -27,10 +27,8 @@ function Login() {
       const authData = await pb
         .collection("users")
         .authWithPassword(data.get("email"), data.get("password"));
-      console.log(pb.authStore.isValid);
-      console.log(pb.authStore.token);
-      console.log(pb.authStore.model.id);
-      
+        pb.authStore.save(pb.authStore.token,pb.authStore.model.id)
+        console.log("guardado")
     } catch {
       setError(true);
     }

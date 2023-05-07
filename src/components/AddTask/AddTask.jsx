@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import "./AddTask.css";
 import PocketBase from "pocketbase";
 import "animate.css";
-import Home from "../../pages/Home/Home";
+import FloatingActionButton from "../FAB/FAB";
 import ColorPicker from "../ColorPicker/ColorPicker";
 
 const pb = new PocketBase("http://127.0.0.1:8090");
@@ -53,11 +53,11 @@ export default function AddTask() {
     setColor(colorr);
     // Realiza cualquier lógica adicional con el color seleccionado aquí
   };
+  
+  
   return (
     <div>
-      <Button className="addTask" onClick={handleOpen}>
-        Add
-      </Button>
+      <FloatingActionButton onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
