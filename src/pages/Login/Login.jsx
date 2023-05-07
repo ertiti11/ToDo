@@ -11,8 +11,8 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import PocketBase from "pocketbase";
-import { Redirect } from "wouter";
+import {pb} from "../../services/getTasks"
+
 
 
 function Login() {
@@ -21,7 +21,6 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const pb = new PocketBase("http://127.0.0.1:8090");
 
     const data = new FormData(event.currentTarget);
     try {
