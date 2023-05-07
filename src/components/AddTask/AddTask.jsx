@@ -6,8 +6,9 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import "./AddTask.css";
 import PocketBase from "pocketbase";
-import 'animate.css';
-
+import "animate.css";
+import Home from "../../pages/Home/Home";
+import ColorPicker from "../ColorPicker/ColorPicker";
 
 const pb = new PocketBase("http://127.0.0.1:8090");
 
@@ -34,31 +35,43 @@ export default function AddTask() {
 
   async function onSubmitHandler(e) {
     e.preventDefault();
-    console.log(color)
     const data = {
       titulo: title,
       descripcion: description,
       tag: tag,
-      color: color
+      color: color,
     };
 
     await pb.collection("tasks").create(data);
+
     setOpen(false);
+
+    window.location.reload(false);
   }
 
+  const handleColorSelect = (colorr) => {
+    setColor(colorr);
+    // Realiza cualquier lógica adicional con el color seleccionado aquí
+  };
   return (
     <div>
       <Button className="addTask" onClick={handleOpen}>
         Add
       </Button>
-      <Modal 
-        className="animate__zoomIn"
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box
+          sx={style}
+          className={
+            open
+              ? "animate__animated animate__zoomIn"
+              : "animate__animated animate__fadeOut"
+          }
+        >
           <form onSubmit={onSubmitHandler} className="taskForm">
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Nueva Tarea
@@ -95,9 +108,10 @@ export default function AddTask() {
               label="Tag"
               variant="outlined"
             />
-            <input type="color" value={color} onChange={(evt) => {
+            {/* <input type="color" value={color} onChange={(evt) => {
                 setColor(evt.target.value);
-              }} />
+              }} /> */}
+            <ColorPicker onColorSelect={handleColorSelect} />
             <Button type="submit" variant="contained">
               Añadir
             </Button>

@@ -1,5 +1,6 @@
 import './TaskCard.css'
 import { useRef, useEffect } from "react";
+import { Link } from 'wouter';
 
 export default function TaskCard({title, description,image,tag, color}) {
   const descriptionRef = useRef(null);
@@ -10,13 +11,14 @@ export default function TaskCard({title, description,image,tag, color}) {
       descriptionRef.current.textContent = text.slice(0, 50) + "...";
     }
   }, []);
-  console.log(color)
   if(image != ""){
     return (
       <div className="taskCard" style={{backgroundColor : color}}>
           <h1>{title}</h1>
           <p ref={descriptionRef}>{description}</p>
-          <span className='tag'>{tag}</span>
+          <Link to={`/categories/${tag}`}>
+            <span  className='tag'>{tag}</span>
+          </Link>
       </div>
     )
   }else{
@@ -24,7 +26,10 @@ export default function TaskCard({title, description,image,tag, color}) {
       <div className="taskCard" style={{backgroundColor : color}}>
           <h1>{title}</h1>
           <p ref={descriptionRef}>{description}</p>
-          <span className='tag'>{tag}</span>
+          <Link to={`/categories/${tag}`}>
+          <span  className='tag'>{tag}</span>
+          </Link>
+          
       </div>
     )
   }

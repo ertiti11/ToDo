@@ -1,6 +1,5 @@
 .addTask {
     position: fixed;
-    
     z-index: 999;
   }
 
@@ -9,5 +8,5 @@
   .taskForm{
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: .2em;
   }

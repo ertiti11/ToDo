@@ -1,11 +1,7 @@
+import TaskList from "../../components/TaskList/TaskList";
 
+export default function Categories({ params }) {
+  const { keyword } = params;
 
-export default function Categories({params}) {
-    const {keyword}  = params;
-
-    
-    
-  return (
-   <p>{keyword}</p>
-  )
+  return <TaskList keyword={keyword} />;
 }
